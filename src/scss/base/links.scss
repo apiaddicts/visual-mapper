@@ -1,0 +1,58 @@
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+#{$a-tags} {
+    // color: get-color("brand");
+    text-decoration: none;
+}
+
+#{$a-tags-hover} {
+    // color: get-color("secondary");
+}
+
+@mixin link-colors($link, $visit, $hover: #6c757d, $active: #6c757d) {
+    a {
+        color: $link;
+
+        &:visited {
+            color: $visit;
+        }
+
+        &:hover {
+            color: $hover;
+        }
+
+        &:active {
+            color: $active;
+        }
+    }
+}
+
+/// Event wrapper
+/// https://css-tricks.com/snippets/sass/simplifying-contexts-events/
+/// @author Harry Roberts
+/// @param {Bool} $self (false) - Whether or not to include current selector
+/// @see https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @include transition($transition-base);
+            @content;
+        }
+    }
+    @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @include transition($transition-base);
+            @content;
+        }
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

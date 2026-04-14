@@ -1,0 +1,189 @@
+$_GET: #61affe;
+$_POST: #49cc90;
+$_PUT: #fca130;
+$_DELETE: #f93e3e;
+
+$verbos: (
+  "get": #61affe,
+  "GET": #61affe,
+  "post": #49cc90,
+  "POST": #49cc90,
+  "put": #fca130,
+  "PUT": #fca130,
+  "delete": #f93e3e,
+  "DELETE": #f93e3e,
+  "patch": #57e3c4,
+  "PATCH": #57e3c4,
+  "send": #49cc90,
+  "receive": #61affe,
+);
+
+/* TODO REMOVE FROM HERE */
+.c-endpoint {
+  @each $verbo, $colorHexadecimalVerbo in $verbos {
+    @include m($verbo) {
+      background-color: rgba($colorHexadecimalVerbo, $alpha: 1);
+      text-transform: uppercase;
+    }
+  }
+
+  @include e("subentity") {
+    @each $verbo, $colorHexadecimalVerbo in $verbos {
+      @include m($verbo) {
+        padding: 8px;
+        background-color: rgba($colorHexadecimalVerbo, $alpha: 0.2);
+        border: 1px solid $colorHexadecimalVerbo;
+      }
+    }
+  }
+}
+/* ------------------- */
+
+.c-resource {
+  $this: &;
+  @include e("item") {
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid transparent;
+    @each $verbo, $colorHexadecimalVerbo in $verbos {
+      @include m($verbo) {
+        background-color: rgba($colorHexadecimalVerbo, $alpha: 0.2);
+        border-color: $colorHexadecimalVerbo;
+        #{$this}__method {
+          background-color: $colorHexadecimalVerbo;
+        }
+        .collapsing,
+        .collapse {
+          border: 1px solid $colorHexadecimalVerbo;
+          border-top: none;
+        }
+      }
+    }
+    @include m("opened") {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  @include e("method") {
+    border-radius: 4px;
+    padding: 8px 2px;
+    min-width: 70px;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    margin-right: 10px;
+    color: get-color("white");
+    font-weight: bold;
+  }
+  @include e("endpoint") {
+    margin-right: 10px;
+  }
+  @include e("info") {
+    color: get-color("grey");
+  }
+}
+
+.custom {
+  @include e("tag") {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    padding: 6px 26px 6px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #fff;
+    line-height: 1;
+    background: #41b883;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    @include m("get") {
+      background-color: $_GET;
+      &:hover {
+        .custom__remove {
+          background-color: darken($_GET, 8%);
+        }
+      }
+    }
+    @include m("post") {
+      background-color: $_POST;
+      &:hover {
+        .custom__remove {
+          background-color: darken($_POST, 8%);
+        }
+      }
+    }
+    @include m("put") {
+      background-color: $_PUT;
+      &:hover {
+        .custom__remove {
+          background-color: darken($_PUT, 8%);
+        }
+      }
+    }
+    @include m("delete") {
+      background-color: $_DELETE;
+      &:hover {
+        .custom__remove {
+          background-color: darken($_DELETE, 8%);
+        }
+      }
+    }
+  }
+  @include e("remove") {
+    cursor: pointer;
+    margin-left: 7px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-weight: 700;
+    font-style: normal;
+    width: 22px;
+    text-align: center;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    &:after {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      content: "\D7";
+      color: #266d4d;
+      font-size: 14px;
+    }
+    &:hover {
+      background: #369a6e;
+      &:after {
+        color: get-color("white");
+      }
+    }
+  }
+}
+
+.multiselect__tag {
+  background: get-color("grey");
+  padding: 6px 26px 6px 10px;
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:after {
+      color: get-color("light");
+    }
+    &:hover {
+      background: get-color("light");
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      &:after {
+        color: get-color("grey");
+      }
+    }
+  }
+}

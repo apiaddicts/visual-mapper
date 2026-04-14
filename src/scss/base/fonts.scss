@@ -1,0 +1,64 @@
+/**
+ *
+ * FUENTES
+ *
+ * Definición e importación de las fuentes utilizadas.
+ *
+ *
+ */
+
+// @import "fonts-types";
+
+%ff-primary,
+.ff-primary {
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+%ff-alternative,
+.ff-alternative {
+  font-family: "Montserrat", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+%ff-extra,
+.ff-extra {
+  font-family: "Montserrat", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+*:not(.fal, .fab, .fas, .far, .ff-alternative, .ff-primary) {
+  font-family: "Montserrat", sans-serif;
+}
+
+// Weight de las fuentes
+.fw-300 {
+  font-weight: 300 !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-700 {
+  font-weight: 700 !important;
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
+body {
+  @extend %ff-primary;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

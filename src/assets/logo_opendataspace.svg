@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none">
+  <!-- Icon: three connected nodes representing data/API connections -->
+  <circle cx="16" cy="24" r="6" fill="#00bcd4"/>
+  <circle cx="36" cy="12" r="5" fill="#fd8e18"/>
+  <circle cx="36" cy="36" r="5" fill="#1863DC"/>
+  <line x1="21" y1="22" x2="32" y2="13" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="21" y1="26" x2="32" y2="35" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="36" y1="17" x2="36" y2="31" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="50" y="21" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="0.5">Open</text>
+  <text x="92" y="21" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#fd8e18" letter-spacing="0.5">Data</text>
+  <text x="128" y="21" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="0.5">Space</text>
+  <text x="50" y="38" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="1">VISUAL MAPPER</text>
+</svg>
