@@ -1,0 +1,108 @@
+.site-footer,
+.l-footer {
+   /**
+* Menú principal
+*/
+    @include e("menu") {
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+
+            @include media-breakpoint-up(sm) {
+                flex-flow: row;
+            }
+
+
+            li {
+                @include media-breakpoint-up(sm) {
+                    &:not(:last-child) {
+                        margin-right: 10px;
+                        position: relative;
+
+                        &:before {
+                            content: "";
+                            width: 1px;
+                            height: 14px;
+                            background-color: get-color("secondary");
+                            position: absolute;
+                            right: -5px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+
+
+                a {
+                    @extend %ff-extra;
+
+                    color: get-color("grey");
+                    font-size: 15px;
+
+                    @include transition($transition-base);
+                    @include on-event {
+                        color: get-color("secondary");
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include e("copy") {
+        font-size: 15px;
+    }
+
+
+    // &__copy {
+    //     order: 2;
+
+    //     @include media-breakpoint-up(md) {
+    //         order: 1;
+    //     }
+    // }
+
+    // &__social {
+    //     order: 1;
+
+    //     @include media-breakpoint-up(md) {
+    //         order: 2;
+    //     }
+
+    //     &-item {
+    //         height: 30px;
+    //         display: inline-flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //         color: get-color("secondary");
+
+    //         @include transition($transition-base);
+
+    //         &:hover {
+    //             color: get-color("white");
+    //             text-decoration: none;
+
+    //             @include transition($transition-base);
+    //         }
+
+    //         &:not(:last-child) {
+    //             margin-right: 10px;
+    //         }
+    //     }
+    // }
+}
+
+.l-footer-top {
+    &__logo {
+        max-height: 85px;
+        width: auto;
+    }
+
+    &__text {
+        @include fluid-type(13px, 15px);
+    }
+}

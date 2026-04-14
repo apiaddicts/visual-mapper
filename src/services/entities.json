@@ -1,0 +1,93 @@
+{
+  "result": {
+    "status": true,
+    "http_code": 200,
+    "info": "OK"
+  },
+  "data": {
+    "entities" : [
+      {		
+        "name" : "Municipio",
+        "table" : "EJPL_MUNICIPIOS", 
+        "attributes" : [
+          {
+            "name" : "idMunicipio",					
+            "type" : "Long",
+            "column" : {						
+              "name" : "MUNICIPIO_ID",
+              "unique" : true,
+              "primary_key" : true,
+              "sequence_name" : "EJPL_S_MUNICIPIO"
+            },
+            "validations" : [{
+              "type" : "NotNull",
+              "value" : ""
+            }]					
+          },
+          {
+            "name" : "nombre",					
+            "type" : "String",
+            "column" : {						
+              "name" : "NOMBRE"					
+            },
+            "validations" : [{
+              "type" : "Size",
+              "max" : 10,
+              "min" : 6						
+            },
+            {
+              "type" : "NoNull"													 
+            }]					
+          },				
+          {
+            "name" : "provincia",
+            "type" : "Provincia",
+            "column" : {},
+            "validations" : [{
+              "type" : "NotNull"
+            }],
+            "relation" : {
+              "type" : "MANY_TO_ONE",
+              "opcional" : false
+            }					
+          }				
+        ]					
+      },
+      {		
+        "name" : "Provincia",
+        "table" : "EJPL_PROVINCIAS", 
+        "attributes" : [
+          {
+            "name" : "idProvincia",					
+            "type" : "Long",
+            "column" : {						
+              "name" : "PROVINCIA_ID",
+              "unique" : true,
+              "primary_key" : true,
+              "sequence_name" : "EJPL_S_PROVINCIA"
+            },
+            "validations" : [{
+              "type" : "NotNull",
+              "value" : ""
+            }]					
+          },
+          {
+            "name" : "nombrepro",					
+            "type" : "String",
+            "column" : {						
+              "name" : "NOMBRE"					
+            },
+            "validations" : [{
+              "type" : "Size",
+              "max" : 10,
+              "min" : 6						
+            },
+            {
+              "type" : "NoNull"													 
+            }]					
+          }
+        ]					
+      }
+    ]
+  }
+}

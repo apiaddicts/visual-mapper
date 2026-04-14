@@ -1,0 +1,29 @@
+.site-content {
+  //padding-top: 120px;
+}
+
+.form-control {
+  min-height: 40px;
+  outline: none;
+  &:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+  }
+}
+
+.multiselect__tags,
+.multiselect__placeholder,
+.multiselect__option,
+.multiselect__single {
+  font-size: 14px;
+}
+
+.multiselect__single {
+  padding-top: 2px;
+}
+
+.multiselect__tags {
+  padding: 6px 40px 0 8px;
+  border: 1px solid #ced4da;
+  border-radius: 0.2rem;
+}

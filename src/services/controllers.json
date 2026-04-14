@@ -1,0 +1,112 @@
+{
+  "result": {
+    "status": true,
+    "http_code": 200,
+    "info": "OK"
+  },
+  "data": {
+    "controllers" : [
+      {
+        "name" : "MunicipioController",
+        "request_mapping" : "/municipios",
+        "services" : ["municipioService"],
+        "common_parameters" : [
+          {
+            "in" : "header",
+            "name" : "x-trace-id",
+            "type" : "string"														
+          }
+        ],
+        "endpoints" : [
+          {
+            "operation" : "PUT",
+            "mapping" : "/{idMunicipio}",
+            "parameters" : [
+              {
+                "in" : "path",
+                "name" : "idMunicipio",
+                "type" : "Long",
+                "default_value" : "",
+                "min_value" : "0",
+                "max_value" : "100"
+              },
+              {
+                "in" : "query",
+                "name" : "fechaAlta",
+                "type" : "string",							
+                "format" : "date"
+              },						
+              {
+                "in" : "header",
+                "name" : "x-trace-id",
+                "type" : "string"														
+              }
+            ],
+            "request_body" : 
+            {		
+              "attributes" : [
+                {
+                  "name" : "nm_municipio",
+                  "type" : "string",
+                  "type_of_array" : "string",
+                  "validations" : [
+                    {
+                      "type" : "NotNull"
+                    }									
+                  ],
+                  "entity_mapping" : {
+                    "name" : "nombre",
+                    "type" : "string",
+                    "type_of_array" : "string"
+                  }								
+                },
+                {
+                  "name" : "idProvincia_s",
+                  "type" : "long",
+                  "validations" : [
+                    {
+                      "type" : "Length",
+                      "max" : 50										
+                    }                   
+                  ],
+                  "entity_mapping" : {
+                    "conversion" : {
+                        "type" : "date",
+                        "value" : "yyyy-mm"
+                    }
+                  }								
+                }
+              ]
+            },
+            "response_data" :
+            {
+              "attributes" : [
+                {
+                  "name" : "username",
+                  "type" : "string",
+                  "validations" : [
+                    {
+                      "type" : "NotNull",
+                      "value" : ""
+                    }
+                  ],
+                  "entity_mapping" : {
+                    "conversion" : {
+                        "type" : "date",
+                        "value" : "yyyy-mm"
+                    }
+                  }								
+                }
+              ]
+            }
+          },
+          {
+            "operation" : "GET",
+            "mapping" : "/{idMunicipio}/calles",				
+            "entity" : "Calle"				
+          }
+        ]
+      }
+    ]
+  }
+}

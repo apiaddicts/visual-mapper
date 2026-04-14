@@ -1,0 +1,9 @@
+.c-alert {
+    padding: 15px;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    background: get-color('secondary');
+    border-radius: 5px;
+    min-width: 400px;
+}

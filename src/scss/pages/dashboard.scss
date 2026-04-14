@@ -1,0 +1,60 @@
+.p-dashboard {
+  @include e("menu") {
+    padding: 0;
+    list-style: none;
+    position: fixed;
+    top: 115px;
+    li {
+      position: relative;
+      padding: 5px 0;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-bottom: 1px;
+      }
+      @include on-event() {
+        @extend .active;
+      }
+      &.active {
+        color: get-color("brand");
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -15px;
+          width: 8px;
+          height: 100%;
+          background-color: get-color("brand");
+        }
+      }
+    }
+  }
+  @include e("submenu") {
+    padding: 0;
+    list-style: none;
+    padding-left: 25px;
+    li {
+      position: relative;
+      padding: 5px 0;
+      cursor: pointer;
+      font-size: 13px;
+      &:not(:last-child) {
+        margin-bottom: 1px;
+      }
+      @include on-event() {
+        @extend .active;
+      }
+      &.active {
+        color: get-color("brand");
+        &:before {
+          content: none;
+          // position: absolute;
+          // top: 0;
+          // left: -15px;
+          // width: 8px;
+          // height: 100%;
+          // background-color: get-color("brand");
+        }
+      }
+    }
+  }
+}

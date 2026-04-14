@@ -1,0 +1,217 @@
+{
+  "result": {
+    "status": true,
+    "http_code": 200,
+    "info": "OK"
+  },
+  "data": {
+    "name" : "municipios-api",
+    "description": "API de Municipios",
+    "group" : "org.madrid.japi",
+    "artifact" : "municipios-api",
+    "version" : "1.0.0-SNAPSHOT",
+    "package" : "org.madrid.japi.municipios",
+    "configuration" : {
+      "datasource" : {
+        "host" : "",
+        "port" : "",
+        "username" : "",
+        "password" :  ""
+      }		
+    },
+    "entities" : [
+      {		
+        "name" : "Municipio",
+        "table" : "EJPL_MUNICIPIOS", 
+        "attributes" : [
+          {
+            "name" : "idMunicipio",					
+            "type" : "Long",
+            "column" : {						
+              "name" : "MUNICIPIO_ID",
+              "unique" : true,
+              "primary_key" : true,
+              "sequence_name" : "EJPL_S_MUNICIPIO"
+            },
+            "validations" : [{
+              "type" : "NotNull",
+              "value" : ""
+            }]					
+          },
+          {
+            "name" : "nombre",					
+            "type" : "String",
+            "column" : {						
+              "name" : "NOMBRE"					
+            },
+            "validations" : [{
+              "type" : "Size",
+              "max" : 10,
+              "min" : 6						
+            },
+            {
+              "type" : "NoNull"													 
+            }]					
+          },				
+          {
+            "name" : "provincia",
+            "type" : "Provincia",
+            "column" : {},
+            "validations" : [{
+              "type" : "NotNull"
+            }],
+            "relation" : {
+              "type" : "MANY_TO_ONE",
+              "opcional" : false
+            }					
+          }				
+        ]					
+      },
+      {		
+        "name" : "Provincia",
+        "table" : "EJPL_PROVINCIAS", 
+        "attributes" : [
+          {
+            "name" : "idProvincia",					
+            "type" : "Long",
+            "column" : {						
+              "name" : "PROVINCIA_ID",
+              "unique" : true,
+              "primary_key" : true,
+              "sequence_name" : "EJPL_S_PROVINCIA"
+            },
+            "validations" : [{
+              "type" : "NotNull",
+              "value" : ""
+            }]					
+          },
+          {
+            "name" : "nombrepro",					
+            "type" : "String",
+            "column" : {						
+              "name" : "NOMBRE"					
+            },
+            "validations" : [{
+              "type" : "Size",
+              "max" : 10,
+              "min" : 6						
+            },
+            {
+              "type" : "NoNull"													 
+            }]					
+          }
+        ]					
+      }
+    ],
+    "controllers" : [
+      {
+        "name" : "MunicipioController",
+        "request_mapping" : "/municipios",
+        "entity" : "Municipio", 
+        "services" : ["municipioService"],
+        "common_parameters" : [
+          {
+            "in" : "header",
+            "name" : "x-trace-id",
+            "type" : "string"														
+          }
+        ],
+        "endpoints" : [
+          {
+            "operation" : "PUT",
+            "mapping" : "/{idMunicipio}",
+            "entity" : "Municipio", 
+            "parameters" : [
+              {
+                "in" : "path",
+                "name" : "idMunicipio",
+                "type" : "Long",
+                "default_value" : "",
+                "min_value" : "0",
+                "max_value" : "100"
+              },
+              {
+                "in" : "query",
+                "name" : "fechaAlta",
+                "type" : "string",							
+                "format" : "date"
+              },						
+              {
+                "in" : "header",
+                "name" : "x-trace-id",
+                "type" : "string"														
+              }
+            ],
+            "request_body" : 
+            {		
+              "entity" : "Municipio",
+              "attributes" : [
+                {
+                  "name" : "nm_municipio",
+                  "type" : "string",
+                  "validations" : [
+                    {
+                      "type" : "NotNull"
+                    }									
+                  ],
+                  "entity_mapping" : {
+                    "name" : "nombre",
+                    "type" : "string"									
+                  }								
+                },
+                {
+                  "name" : "idProvincia_s",
+                  "type" : "long",
+                  "validations" : [
+                    {
+                      "type" : "Length",
+                      "max" : 50										
+                    }
+                    
+                  ],
+                  "entity_mapping" : {
+                    "name" : "provincia",
+                    "type" : "Provincia",
+                    "conversion" : {
+                        "type" : "date",
+                        "value" : "yyyy-mm"
+                    }
+                  }								
+                }
+              ]
+            },
+            "response_data" :
+            {
+              "entity" : "Municipio",
+              "attributes" : [
+                {
+                  "name" : "username",
+                  "type" : "string",
+                  "validations" : [
+                    {
+                      "type" : "NotNull",
+                      "value" : ""
+                    }
+                  ],
+                  "entity_mapping" : {
+                    "name" : "nombre",
+                    "type" : "string",
+                    "conversion" : {
+                        "type" : "date",
+                        "value" : "yyyy-mm"
+                    }
+                  }								
+                }
+              ]
+            }
+          },
+          {
+            "operation" : "GET",
+            "mapping" : "/{idMunicipio}/calles",				
+            "entity" : "Calle"				
+          }
+        ]
+      }
+    ]
+  }
+}

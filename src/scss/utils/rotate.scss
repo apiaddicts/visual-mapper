@@ -1,0 +1,14 @@
+/**
+* 
+*   Mixin to rotate object.
+*   @author Alex Tomás
+*   @param {String} $degrees - Degrees to rotate
+*
+*/
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+  -moz-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  transform: rotate($degrees);
+}

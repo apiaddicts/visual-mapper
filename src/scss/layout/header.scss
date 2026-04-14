@@ -1,0 +1,25 @@
+.l-header {
+  background-color: get-color("brand");
+  min-height: 53px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  z-index: z("vegeta");
+  @include e("links") {
+    a {
+      color: get-color("white");
+      font-size: 14px;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+      @include on-event() {
+        color: get-color("secondary");
+      }
+    }
+  }
+
+  .environment-badge {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,74 @@
+$colors: (
+  "brand": #00bcd4,
+  "secondary": #05172d,
+  "extra": #FFFFFF,
+  "red": #1863DC,
+  "yellow": #fd8e18,
+  "black": #000000,
+  "white": #ffffff,
+  "grey": #848788,
+  "light": #f4f5f7,
+  "error": rgb(190, 13, 13),
+  "ok": #4f8a10
+);
+
+@function get-color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@each $colorNameKey, $colorHex in $colors {
+  .color-#{$colorNameKey} {
+    color: $colorHex !important;
+  }
+  .color-hover-#{$colorNameKey}:hover,
+  .color-hover-#{$colorNameKey}:focus {
+    color: $colorHex !important;
+    text-decoration: none;
+    @include transition($transition-base);
+  }
+
+  .bg-#{$colorNameKey},
+  .background-#{$colorNameKey} {
+    background-color: $colorHex !important;
+    cursor: initial;
+    &:disabled {
+      background-color: rgba($colorHex, 0.6) !important;
+      cursor: not-allowed;
+    }
+  }
+  .border-#{$colorNameKey} {
+    border: 1px solid $colorHex !important;
+  }
+  .border-top#{$colorNameKey} {
+    border-top: 1px solid $colorHex !important;
+  }
+  .border-hover-#{$colorNameKey}:hover,
+  .border-hover-#{$colorNameKey}:focus {
+    border-color: $colorHex !important;
+    @include transition($transition-base);
+  }
+
+  .bg-hover-#{$colorNameKey}:hover,
+  .bg-hover-#{$colorNameKey}:focus {
+    @include transition($transition-base);
+    background-color: $colorHex !important;
+  }
+}
+
+.gradient-grey {
+  background-image: radial-gradient(circle at 50% 50%, #ffffff, #e8edef);
+}
+
+// $color-brand:       #0071CE;  // Color principal - Color predominante, corporativo
+// $color-secondary:   #490d8d;  // Color secundario
+
+// // Colores VCV
+// $color-red:         #F7323F;
+// $color-yellow:      #FFD700;
+// $color-black:       #000000;
+// $color-white:       #FFFFFF;
+
+// // Otros colores
+// $color-green:       #5EDBBC;
+// $color-orange:      #F28E00;
+// $color-grey:        #FAFAFA;

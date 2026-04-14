@@ -1,0 +1,17 @@
+/**
+*   Alex Tomás | Marzo 2018
+*   Declaración de valores z-index.
+*
+*   Ejemplo de uso: z-index: z('goku');
+*/
+
+$z-layers: (
+  "goku":    999,
+  "vegeta":  500,
+  "default": 1,
+  "krilin":  -1
+);
+
+@function z($layer) {
+  @return map-get($z-layers, $layer);
+}

@@ -1,0 +1,85 @@
+@import "@vueform/multiselect/themes/default.css";
+@import 'bootstrap/scss/bootstrap.scss';
+
+// Font Awesome
+$fa-font-path: "~@/scss/fonts/fontawesome";
+@import "fontawesome/fontawesome";
+@import "fontawesome/fa-light";
+@import "fontawesome/fa-regular";
+@import "fontawesome/fa-solid";
+@import "fontawesome/fa-brands";
+
+// UTILIDADES
+@import "utils/bem";
+@import "utils/fluid-type";
+@import "utils/z-index";
+
+// BASE
+@import "base/border";
+@import "base/colors";
+@import "base/fonts";
+@import "base/image";
+@import "base/links";
+@import "base/text";
+
+// LAYOUT
+@import "layout/header";
+@import "layout/subheader";
+@import "layout/general";
+
+// ELEMENTOS
+@import "elements/breadcrumbs";
+@import "elements/buttons";
+@import "elements/collapse";
+
+// COMPONENTES
+@import "components/endpoint";
+@import "components/resource";
+@import "components/import-config";
+@import "components/validations";
+@import "components/md-toast-error";
+@import "components/asyncapi/md-async-api-visualizer";
+
+// PÁGINAS
+@import "pages/dashboard";
+
+.site-content {
+  @include media-breakpoint-up(md) {
+    padding-top: 53px + 45px + 15px;
+  }
+}
+
+.bbdd-container {
+  background-color: rgba(228, 228, 228, 0.952);
+  padding: 10px;
+}
+
+.bbdd-message {
+  padding: 10px;
+  outline: 2px dashed rgb(160, 158, 158);
+}
+
+.custom-control-input {
+  color: #fff;
+  border-color: darkgray;
+  background-color: red;
+}
+
+body {
+  background-color: get-color("light");
+}
+
+// Estilo que sobreescribe el color de los checkbox cuando están marcados
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: get-color('red');
+  background-color: get-color('red');
+}
+
+.multiselect_expandido, .multiselect_expandido > .multiselect__content-wrapper {
+  min-width: 100%;
+}
+
+.bold {
+  font-weight: bold;
+}
